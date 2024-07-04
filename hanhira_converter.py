@@ -1,3 +1,4 @@
+# 한국어 발음을 히라가나로 변환하는 코드 (2024.6.29)
 import csv
 from hanhira_dict import hanhira
 
