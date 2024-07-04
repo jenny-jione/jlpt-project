@@ -1,5 +1,5 @@
 import csv
-from hiragana_conversion_dict import hanhira
+from hanhira_dict import hanhira
 
 def convert_to_hiragana(text: str):
     hira, read = '', ''
