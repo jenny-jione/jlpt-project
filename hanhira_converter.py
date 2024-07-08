@@ -2,17 +2,25 @@
 import csv
 from hanhira_dict import hanhira
 
+addie = []  # 딕셔너리에 없는 값을 체크하기 위한 리스트
+
 def convert_to_hiragana(text: str):
+    global addie
     hira, read = '', ''
     # 발음을 히라가나로 변환
     for char in text:
         if char in hanhira:
             hira += hanhira[char]
         else:
-            print(f'{char} :: {text}')
+            # 딕셔너리에 없지만 3000엔 같은 경우에는 나타내지 않게 하기 위한 조건문
+            if not char.isdigit():
+                addie.append(char)
+                print(f'{char} :: {text}')
             hira += char
         if char=='왛':
             read += '와'
+        elif char=='워':
+            read += '오'
         else:
             read += char
     return hira, read
@@ -42,5 +50,10 @@ elif input_type == '2':
             hira, read_new = convert_to_hiragana(read)
             wr.writerow([hira, read_new, mean])
     print(f'{len(data)} data successfully converted.')
+
+    if len(addie)>0:
+        print()
+        print(''.join(list(set(addie))))
+        print(len(set(addie)))
 else:
     print('선택이 잘못됨')
