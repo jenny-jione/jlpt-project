@@ -24,12 +24,11 @@ def print_result(data):
 result = []
 
 input_type = input('입력 타입 선택(1.터미널 입력 변환 2.파일 변환): ')
-# input_type = '2'
 if input_type == '1':
+    print('히라가나로 변환할 발음을 한국어로 써주세요. (단, 조사 は는 \'왛\'로, を는 \'워\'로 입력)')
     s = input()
-    read, mean = s.split('\t')
-    hira, read_new = convert_to_hiragana(read)
-    print_result([hira, read_new, mean])
+    hira, read = convert_to_hiragana(s)
+    print(f'{read} -> {hira}')
     
 elif input_type == '2':
     with open('./jlpt_flashcard_input.txt', 'r') as f1,\
