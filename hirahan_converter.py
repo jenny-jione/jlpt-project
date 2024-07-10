@@ -102,7 +102,7 @@ def hiragana_convert(hira):
     syllables = split_hiragana(hira)
     for syllable in syllables:
         # 히라가나가 아닌 것은 continue
-        if syllable in ' -ー=':
+        if syllable < 'ぁ' or syllable > 'ゖ':
             han += syllable
             continue
         # 분리된 히라가나를 한글로 대응시키기
