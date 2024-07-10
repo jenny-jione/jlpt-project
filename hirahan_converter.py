@@ -1,4 +1,8 @@
 # 히라가나를 한국어 발음으로 변환하는 코드 (2024.7.4)
+"""
+input : しあわせ
+output: 시아와세
+"""
 from jamodict import *
 from hirahan_dict import hirahan
 
