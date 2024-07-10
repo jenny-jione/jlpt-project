@@ -111,4 +111,8 @@ def hiragana_convert(hira):
         hangeul_char = combine_jamo(jamos)
         han += hangeul_char
     return han
-print(hiragana_convert('いらっしゃいませ'))
+
+if __name__ == "__main__":
+    hira = input('히라가나 입력: ')
+    hangeul = hiragana_convert(hira)
+    print(f'{hira} -> {hangeul}')
