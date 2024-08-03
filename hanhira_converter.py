@@ -2,8 +2,16 @@
 """
 input : 시아와세
 output: しあわせ
+
+파일일 경우
+hanhira_text_input.txt
+코노 혼왛 오모시로이데스./이 책은 재미있습니다.
+
+hanhira_text_output.txt
+この ほんは おもしろいです。
+이 책은 재미있습니다.
 """
-import csv
+
 from hanhira_dict import hanhira
 
 addie = []  # 딕셔너리에 없는 값을 체크하기 위한 리스트
@@ -43,17 +51,15 @@ if input_type == '1':
     print(f'{read} -> {hira}')
     
 elif input_type == '2':
-    with open('./jlpt_flashcard_input.txt', 'r') as f1,\
-          open('./jlpt_flashcard.csv', 'w') as f2:
+    with open('./hanhira_text_input.txt', 'r') as f1,\
+    open('./hanhira_text_output.txt', 'w') as f2:
         data = f1.readlines()
-        wr = csv.writer(f2)
-        wr.writerow(['단어', '발음', '뜻'])
-
         for line in data:
             read, mean = line.strip().split('/')
             hira, read_new = convert_to_hiragana(read)
-            wr.writerow([hira, read_new, mean])
-    print(f'{len(data)} data successfully converted.')
+            f2.write(f'{hira}\n')
+            f2.write(f'{mean}\n\n')
+        print(f'{len(data)} data successfully converted.')
 
     if len(addie)>0:
         print()
